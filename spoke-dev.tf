@@ -18,9 +18,9 @@
 
 module "dev-spoke-project" {
   source          = "./modules/project"
-  billing_account = var.billing_account.id
+  billing_account = local.billing_account.id
   name            = "dev-net-nva-spoke-0"
-  parent          = var.folder_ids.networking-dev
+  parent          = local.folder_ids.networking-dev
   prefix          = var.prefix
   services = [
     "compute.googleapis.com",

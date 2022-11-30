@@ -25,7 +25,7 @@ locals {
     })]
   }
   service_accounts = {
-    for k, v in coalesce(locals.service_accounts_from_remote, {}) :
+    for k, v in coalesce(local.service_accounts_from_remote, {}) :
     k => "serviceAccount:${v}" if v != null
   }
   stage3_sas_delegated_grants = [
