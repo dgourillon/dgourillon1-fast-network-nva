@@ -17,7 +17,7 @@
 # tfdoc:file:description Dev spoke VPC and related resources.
 
 module "dev-spoke-project" {
-  source          = "../../../modules/project"
+  source          = "./modules/project"
   billing_account = var.billing_account.id
   name            = "dev-net-nva-spoke-0"
   parent          = var.folder_ids.networking-dev
@@ -43,7 +43,7 @@ module "dev-spoke-project" {
 }
 
 module "dev-spoke-vpc" {
-  source                          = "../../../modules/net-vpc"
+  source                          = "./modules/net-vpc"
   project_id                      = module.dev-spoke-project.project_id
   name                            = "dev-spoke-0"
   mtu                             = 1500
@@ -97,7 +97,7 @@ module "dev-spoke-vpc" {
 }
 
 module "dev-spoke-firewall" {
-  source     = "../../../modules/net-vpc-firewall"
+  source     = "./modules/net-vpc-firewall"
   project_id = module.dev-spoke-project.project_id
   network    = module.dev-spoke-vpc.name
   default_rules_config = {
@@ -110,7 +110,7 @@ module "dev-spoke-firewall" {
 }
 
 module "peering-dev" {
-  source        = "../../../modules/net-vpc-peering"
+  source        = "./modules/net-vpc-peering"
   prefix        = "dev-peering-0"
   local_network = module.dev-spoke-vpc.self_link
   peer_network  = module.landing-trusted-vpc.self_link

@@ -48,14 +48,14 @@ locals {
 
 # NVA config
 module "nva-cloud-config" {
-  source               = "../../../modules/cloud-config-container/simple-nva"
+  source               = "./modules/cloud-config-container/simple-nva"
   enable_health_checks = true
   network_interfaces   = local.routing_config
 }
 
 module "nva-template" {
   for_each        = local.nva_locality
-  source          = "../../../modules/compute-vm"
+  source          = "./modules/compute-vm"
   project_id      = module.landing-project.project_id
   name            = "nva-template-${each.value.trigram}-${each.value.zone}"
   zone            = "${each.value.region}-${each.value.zone}"
@@ -95,7 +95,7 @@ module "nva-template" {
 
 module "nva-mig" {
   for_each          = local.nva_locality
-  source            = "../../../modules/compute-mig"
+  source            = "./modules/compute-mig"
   project_id        = module.landing-project.project_id
   location          = each.value.region
   name              = "nva-cos-${each.value.trigram}-${each.value.zone}"
@@ -114,7 +114,7 @@ module "nva-mig" {
 
 module "ilb-nva-untrusted" {
   for_each      = { for l in local.nva_locality : l.region => l.trigram... }
-  source        = "../../../modules/net-ilb"
+  source        = "./modules/net-ilb"
   project_id    = module.landing-project.project_id
   region        = each.key
   name          = "nva-untrusted-${each.value.0}"
@@ -140,7 +140,7 @@ module "ilb-nva-untrusted" {
 
 module "ilb-nva-trusted" {
   for_each      = { for l in local.nva_locality : l.region => l.trigram... }
-  source        = "../../../modules/net-ilb"
+  source        = "./modules/net-ilb"
   project_id    = module.landing-project.project_id
   region        = each.key
   name          = "nva-trusted-${each.value.0}"

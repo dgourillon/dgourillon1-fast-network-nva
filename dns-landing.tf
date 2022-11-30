@@ -19,7 +19,7 @@
 # forwarding to on-prem DNS resolvers
 
 module "onprem-example-dns-forwarding" {
-  source     = "../../../modules/dns"
+  source     = "./modules/dns"
   project_id = module.landing-project.project_id
   type       = "forwarding"
   name       = "example-com"
@@ -32,7 +32,7 @@ module "onprem-example-dns-forwarding" {
 }
 
 module "reverse-10-dns-forwarding" {
-  source     = "../../../modules/dns"
+  source     = "./modules/dns"
   project_id = module.landing-project.project_id
   type       = "forwarding"
   name       = "root-reverse-10"
@@ -45,7 +45,7 @@ module "reverse-10-dns-forwarding" {
 }
 
 module "gcp-example-dns-private-zone" {
-  source     = "../../../modules/dns"
+  source     = "./modules/dns"
   project_id = module.landing-project.project_id
   type       = "private"
   name       = "gcp-example-com"
@@ -62,7 +62,7 @@ module "gcp-example-dns-private-zone" {
 # Google APIs
 
 module "googleapis-private-zone" {
-  source     = "../../../modules/dns"
+  source     = "./modules/dns"
   project_id = module.landing-project.project_id
   type       = "private"
   name       = "googleapis-com"
@@ -83,7 +83,7 @@ module "googleapis-private-zone" {
 }
 
 module "gcrio-private-zone" {
-  source     = "../../../modules/dns"
+  source     = "./modules/dns"
   project_id = module.landing-project.project_id
   type       = "private"
   name       = "gcr-io"
@@ -101,7 +101,7 @@ module "gcrio-private-zone" {
 }
 
 module "packages-private-zone" {
-  source     = "../../../modules/dns"
+  source     = "./modules/dns"
   project_id = module.landing-project.project_id
   type       = "private"
   name       = "packages-cloud"
@@ -119,7 +119,7 @@ module "packages-private-zone" {
 }
 
 module "pkgdev-private-zone" {
-  source     = "../../../modules/dns"
+  source     = "./modules/dns"
   project_id = module.landing-project.project_id
   type       = "private"
   name       = "pkg-dev"
@@ -137,7 +137,7 @@ module "pkgdev-private-zone" {
 }
 
 module "pkigoog-private-zone" {
-  source     = "../../../modules/dns"
+  source     = "./modules/dns"
   project_id = module.landing-project.project_id
   type       = "private"
   name       = "pki-goog"

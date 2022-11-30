@@ -19,7 +19,7 @@
 # # Untrusted (Landing)
 
 # module "test-vm-landing-untrusted-ew1-0" {
-#   source     = "../../../modules/compute-vm"
+#   source     = "./modules/compute-vm"
 #   project_id = module.landing-project.project_id
 #   zone       = "europe-west1-b"
 #   name       = "test-vm-lnd-unt-ew1-0"
@@ -45,7 +45,7 @@
 # }
 
 # module "test-vm-landing-untrusted-ew4-0" {
-#   source     = "../../../modules/compute-vm"
+#   source     = "./modules/compute-vm"
 #   project_id = module.landing-project.project_id
 #   zone       = "europe-west4-a"
 #   name       = "test-vm-lnd-unt-ew4-0"
@@ -73,7 +73,7 @@
 # # Trusted (hub)
 
 # module "test-vm-landing-trusted-ew1-0" {
-#   source     = "../../../modules/compute-vm"
+#   source     = "./modules/compute-vm"
 #   project_id = module.landing-project.project_id
 #   zone       = "europe-west1-b"
 #   name       = "test-vm-lnd-tru-ew1-0"
@@ -99,7 +99,7 @@
 # }
 
 # module "test-vm-landing-trusted-ew4-0" {
-#   source     = "../../../modules/compute-vm"
+#   source     = "./modules/compute-vm"
 #   project_id = module.landing-project.project_id
 #   zone       = "europe-west4-a"
 #   name       = "test-vm-lnd-tru-ew4-0"
@@ -127,7 +127,7 @@
 # # Dev spoke
 
 # module "test-vm-dev-ew1-0" {
-#   source     = "../../../modules/compute-vm"
+#   source     = "./modules/compute-vm"
 #   project_id = module.dev-spoke-project.project_id
 #   zone       = "europe-west1-b"
 #   name       = "test-vm-dev-ew1-0"
@@ -154,7 +154,7 @@
 # }
 
 # module "test-vm-dev-ew4-0" {
-#   source     = "../../../modules/compute-vm"
+#   source     = "./modules/compute-vm"
 #   project_id = module.dev-spoke-project.project_id
 #   zone       = "europe-west4-a"
 #   name       = "test-vm-dev-ew4-0"
@@ -183,7 +183,7 @@
 # # Prod spoke
 
 # module "test-vm-prod-ew1-0" {
-#   source     = "../../../modules/compute-vm"
+#   source     = "./modules/compute-vm"
 #   project_id = module.prod-spoke-project.project_id
 #   zone       = "europe-west1-b"
 #   name       = "test-vm-prod-ew1-0"
@@ -212,7 +212,7 @@
 # }
 
 # module "test-vm-prod-ew4-0" {
-#   source     = "../../../modules/compute-vm"
+#   source     = "./modules/compute-vm"
 #   project_id = module.prod-spoke-project.project_id
 #   zone       = "europe-west4-a"
 #   name       = "test-vm-prod-ew4-0"

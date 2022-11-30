@@ -17,7 +17,7 @@
 # tfdoc:file:description Landing VPC and related resources.
 
 module "landing-project" {
-  source          = "../../../modules/project"
+  source          = "./modules/project"
   billing_account = var.billing_account.id
   name            = "prod-net-nva-landing-0"
   parent          = var.folder_ids.networking-prod
@@ -45,7 +45,7 @@ module "landing-project" {
 # Untrusted VPC
 
 module "landing-untrusted-vpc" {
-  source     = "../../../modules/net-vpc"
+  source     = "./modules/net-vpc"
   project_id = module.landing-project.project_id
   name       = "prod-untrusted-landing-0"
   mtu        = 1500
@@ -57,7 +57,7 @@ module "landing-untrusted-vpc" {
 }
 
 module "landing-untrusted-firewall" {
-  source     = "../../../modules/net-vpc-firewall"
+  source     = "./modules/net-vpc-firewall"
   project_id = module.landing-project.project_id
   network    = module.landing-untrusted-vpc.name
   default_rules_config = {
@@ -72,7 +72,7 @@ module "landing-untrusted-firewall" {
 # NAT
 
 module "landing-nat-ew1" {
-  source         = "../../../modules/net-cloudnat"
+  source         = "./modules/net-cloudnat"
   project_id     = module.landing-project.project_id
   region         = "europe-west1"
   name           = "ew1"
@@ -83,7 +83,7 @@ module "landing-nat-ew1" {
 }
 
 module "landing-nat-ew4" {
-  source         = "../../../modules/net-cloudnat"
+  source         = "./modules/net-cloudnat"
   project_id     = module.landing-project.project_id
   region         = "europe-west4"
   name           = "ew4"
@@ -96,7 +96,7 @@ module "landing-nat-ew4" {
 # Trusted VPC
 
 module "landing-trusted-vpc" {
-  source                          = "../../../modules/net-vpc"
+  source                          = "./modules/net-vpc"
   project_id                      = module.landing-project.project_id
   name                            = "prod-trusted-landing-0"
   delete_default_routes_on_create = true
@@ -124,7 +124,7 @@ module "landing-trusted-vpc" {
 }
 
 module "landing-trusted-firewall" {
-  source     = "../../../modules/net-vpc-firewall"
+  source     = "./modules/net-vpc-firewall"
   project_id = module.landing-project.project_id
   network    = module.landing-trusted-vpc.name
   default_rules_config = {

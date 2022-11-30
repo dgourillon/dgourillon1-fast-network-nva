@@ -17,7 +17,7 @@
 # tfdoc:file:description Production spoke VPC and related resources.
 
 module "prod-spoke-project" {
-  source          = "../../../modules/project"
+  source          = "./modules/project"
   billing_account = var.billing_account.id
   name            = "prod-net-nva-spoke-0"
   parent          = var.folder_ids.networking-prod
@@ -43,7 +43,7 @@ module "prod-spoke-project" {
 }
 
 module "prod-spoke-vpc" {
-  source                          = "../../../modules/net-vpc"
+  source                          = "./modules/net-vpc"
   project_id                      = module.prod-spoke-project.project_id
   name                            = "prod-spoke-0"
   mtu                             = 1500
@@ -97,7 +97,7 @@ module "prod-spoke-vpc" {
 }
 
 module "prod-spoke-firewall" {
-  source     = "../../../modules/net-vpc-firewall"
+  source     = "./modules/net-vpc-firewall"
   project_id = module.prod-spoke-project.project_id
   network    = module.prod-spoke-vpc.name
   default_rules_config = {
@@ -110,7 +110,7 @@ module "prod-spoke-firewall" {
 }
 
 module "peering-prod" {
-  source        = "../../../modules/net-vpc-peering"
+  source        = "./modules/net-vpc-peering"
   prefix        = "prod-peering-0"
   local_network = module.prod-spoke-vpc.self_link
   peer_network  = module.landing-trusted-vpc.self_link
