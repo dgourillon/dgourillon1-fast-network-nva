@@ -34,7 +34,7 @@ resource "google_compute_region_backend_service" "default" {
   name = "my-service"
   health_checks = [google_compute_health_check.default.id]
   project = module.landing-project.project_id
-  zone        = "us-central1-a"
+  region        = "us-central1"
 }
 
 resource "google_compute_health_check" "default" {
