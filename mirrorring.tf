@@ -65,6 +65,7 @@ resource "google_compute_packet_mirroring" "foobar" {
   name = "my-mirroring"
   description = "bar"
   project = module.landing-project.project_id
+  region = "us-central1"
   network {
     url = google_compute_network.default.id
   }
