@@ -11,8 +11,7 @@ resource "google_compute_instance" "mirror" {
 
   network_interface {
     network = google_compute_network.default.id
-    access_config {
-    }
+    
   }
 }
 
@@ -50,7 +49,7 @@ resource "google_compute_health_check" "default" {
 resource "google_compute_forwarding_rule" "default" {
   depends_on = [google_compute_subnetwork.default]
   name       = "my-ilb"
-
+  region        = "us-central1"
   is_mirroring_collector = true
   ip_protocol            = "TCP"
   load_balancing_scheme  = "INTERNAL"
